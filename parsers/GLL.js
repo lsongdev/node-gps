@@ -1,4 +1,10 @@
-module.exports = () => {
+const { 
+  parseTime,
+  parseCoord,
+  parseRMC_GLLStatus
+} = require('../lib/utils');
+
+module.exports = (gll, str) => {
   if (gll.length !== 9) {
     throw 'Invalid GLL length: ' + str;
   }

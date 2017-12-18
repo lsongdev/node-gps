@@ -2,7 +2,6 @@ module.exports = (vtg, str) => {
   if (vtg.length !== 10 && vtg.length !== 11) {
     throw 'Invalid VTG length: ' + str;
   }
-
   /*
    ------------------------------------------------------------------------------
    1  2  3  4  5  6  7  8 9   10
@@ -20,9 +19,7 @@ module.exports = (vtg, str) => {
    (9)   = FAA mode indicator (NMEA 2.3 and later)
    9/10 = Checksum
    */
-
   if (vtg[2] === '' && vtg[8] === '' && vtg[6] === '') {
-
     return {
       'track': null,
       'speed': null,

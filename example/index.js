@@ -8,5 +8,5 @@ gps.on('data', data => {
 });
 
 fs
-.createReadStream(__dirname + '/data/gps.dump')
+.createReadStream('/dev/cu.usbmodem1411')
 .pipe(gps)
