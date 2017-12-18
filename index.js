@@ -1,3 +1,5 @@
+const util         = require('util');
+const EventEmitter = require('events');
 /**
  * [GPS description]
  * @wiki https://en.wikipedia.org/wiki/NMEA_0183
@@ -8,10 +10,12 @@ function GPS(){
   if(!(this instanceof GPS)){
     return new GPS();
   }
-  this.events = {};
+  EventEmitter.call(this);
   this.buffer = '';
   return this;
 };
+
+util.inherits(GPS, EventEmitter);
 
 GPS.CR        = '\r'; // 0x0d;
 GPS.LF        = '\n'; // 0x0a;
@@ -19,29 +23,6 @@ GPS.$         = '$';  // 0x24;
 GPS.SEPARATOR = ',';  // 0x2c;
 GPS.CHECKSUM  = 0x2a; // *
 GPS.TAG       = '\\';
-
-GPS.prototype.on = function(type, handler){
-  (this.events[type] = this.events[type] || []).push(handler);
-  return this;
-};
-
-GPS.prototype.once = function(type, handler){
-  return this.on(type, function(){
-    this.removeListener(type, arguments.callee);
-    handler.apply(null, arguments);
-  });
-};
-
-GPS.prototype.removeListener = function(){
-  
-};
-
-GPS.prototype.emit = function(type){
-  const args = [].slice.call(arguments, 1);
-  (this.events[type] || []).forEach(handler => {
-    handler.apply(null, args);
-  });
-};
 
 GPS.prototype.write = function(buffer){
   this.buffer += buffer;
