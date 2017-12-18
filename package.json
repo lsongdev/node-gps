@@ -1,0 +1,40 @@
+{
+  "name": "node-gps",
+  "version": "0.0.1",
+  "description": "A GPS NMEA parser library",
+  "keywords": [
+    "nmea",
+    "gps",
+    "serial",
+    "parser",
+    "distance",
+    "geo",
+    "location",
+    "rmc",
+    "gga",
+    "gll",
+    "gsa",
+    "vtg",
+    "gva"
+  ],
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "url": "git+ssh://git@github.com/song940/node-gps.git",
+    "type": "git"
+  },
+  "author": "Lsong <song940@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/song940/node-gps/issues"
+  },
+  "homepage": "https://github.com/song940/node-gps#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
